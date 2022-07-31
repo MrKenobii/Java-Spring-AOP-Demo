@@ -7,12 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-@Order(3)
-public class DemoLoggingAspect {
-
+@Order(1)
+public class CloudLogAsyncAspect {
     @Before("com.anilduyguc.aopdemo.pointcut.expressions.PointcutDeclarations.forDaoPackageNoGetterSetter()")
-    public void beforeAddAccountAdvice(){
-        System.out.println("\n======>>> Executing @Before advice on add*()"); // this will run before the addAccount method
+    public void logToCloudAsync() {
+        System.out.println("\n======>>> Logging into Cloud :)");
     }
-
 }

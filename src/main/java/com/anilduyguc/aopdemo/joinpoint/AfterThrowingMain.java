@@ -5,18 +5,24 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.util.List;
 
-public class AfterReturningMain {
+public class AfterThrowingMain {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(Config.class);
 
         AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
-
-        List<Account> accounts = accountDAO.findAccounts(false);
-        System.out.println("\n\nMain program: AfterReturningMain");
+        List<Account> accounts = null;
+        try{
+            boolean flag = true;
+            accounts = accountDAO.findAccounts(flag);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n\nMain program: AfterThrowingMain");
         for(Account account: accounts) {
             System.out.println(account);
         }
+
 
         context.close();
     }

@@ -44,7 +44,9 @@ public class AccountDAO {
         System.out.println(getClass() + " setServiceCode()");
         this.serviceCode = serviceCode;
     }
-    public List<Account> findAccounts(){
+    public List<Account> findAccounts(boolean flag){
+        if (flag) throw new RuntimeException("Throwing exception");
+
         List<Account> accounts = new ArrayList<>();
         accounts.add(new Account("John", "Silver"));
         accounts.add(new Account("Drake", "Platinum"));

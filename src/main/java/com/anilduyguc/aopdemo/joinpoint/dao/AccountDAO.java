@@ -4,6 +4,9 @@ package com.anilduyguc.aopdemo.joinpoint.dao;
 import com.anilduyguc.aopdemo.joinpoint.Account;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Component
 public class AccountDAO {
@@ -40,5 +43,12 @@ public class AccountDAO {
     public void setServiceCode(String serviceCode) {
         System.out.println(getClass() + " setServiceCode()");
         this.serviceCode = serviceCode;
+    }
+    public List<Account> findAccounts(){
+        List<Account> accounts = new ArrayList<>();
+        accounts.add(new Account("John", "Silver"));
+        accounts.add(new Account("Drake", "Platinum"));
+        accounts.add(new Account("Fred", "Gold"));
+        return  accounts;
     }
 }

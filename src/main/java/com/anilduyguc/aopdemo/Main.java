@@ -12,9 +12,12 @@ public class Main {
         AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
         MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 
-        accountDAO.addAccount();
+        accountDAO.addAccount(new Account(), true);
         accountDAO.addSillyMember();
+        accountDAO.doWork();
+
         membershipDAO.addAccount();
+        membershipDAO.goToSleep();
 
         context.close();
     }
